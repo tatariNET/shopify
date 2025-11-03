@@ -3,7 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faCartShopping, faPhone, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faBars, faXmark, faRoute } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +35,38 @@ export default function Navbar() {
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
+
+  const handleSeeRoute = () => {
+    const destLat = 8.998964123447454;
+  
+    const destLng =38.78718387232911;
+        const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLat},${destLng}&travelmode=driving`;
+
+    if (!navigator.geolocation) {
+      window.open(fallbackUrl, "_blank");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destLat},${destLng}&travelmode=driving`;
+        
+        window.open(mapUrl, "_blank");
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        window.open(fallbackUrl, "_blank");
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    );
+  };
+
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-50 border-b border-gray-200 transition-all duration-300 ${
@@ -41,24 +75,40 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-blue-600 tracking-tight">
+          <Image
+            src="/logo.png"
+            alt="Royal Computer Logo"
+            width={40}
+            height={40}
+            className="object-contain"
+          />
+          <motion.span
+            className="text-lg sm:text-xl font-bold text-blue-600 tracking-tight"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             Royal Computer
-          </span>
+          </motion.span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-2 text-gray-800 hover:text-blue-600 font-medium">
-            <FontAwesomeIcon icon={faHouse} className="w-4 h-4" />
-            Home
-          </Link>
-          <Link href="/shop" className="flex items-center gap-2 text-gray-800 hover:text-blue-600 font-medium">
-            <FontAwesomeIcon icon={faCartShopping} className="w-4 h-4" />
-            Shop
-          </Link>
-          <Link href="#contact" className="flex items-center gap-2 text-gray-800 hover:text-blue-600 font-medium">
+          <a
+            href="#contact"
+            className="flex items-center gap-2 text-gray-800 hover:text-blue-600 font-medium transition"
+          >
             <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
             Contact
-          </Link>
+          </a>
+
+          <button
+            onClick={handleSeeRoute}
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition"
+          >
+            <FontAwesomeIcon icon={faRoute} className="w-4 h-4" />
+            See Route
+          </button>
         </div>
+
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 text-gray-800 hover:text-blue-600 focus:outline-none transition"
@@ -69,33 +119,28 @@ export default function Navbar() {
       {isOpen && (
         <div
           ref={menuRef}
-          className="absolute right-0 border-t-gray-200 border-t-2 w-[60%] bg-white  shadow-lg l md:hidden "
+          className="absolute right-0 border-t-gray-200 border-t-2 w-[60%] bg-white shadow-lg md:hidden"
         >
           <div className="px-6 py-5 flex flex-col space-y-4">
-            <Link
-              href="/"
-              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              <FontAwesomeIcon icon={faHouse} className="w-4 h-4" />
-              Home
-            </Link>
-            <Link
-              href="/shop"
-              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              <FontAwesomeIcon icon={faCartShopping} className="w-4 h-4" />
-              Shop
-            </Link>
-            <Link
+            <a
               href="#contact"
               className="flex items-center gap-3 text-gray-800 hover:text-blue-600 font-medium"
               onClick={() => setIsOpen(false)}
             >
               <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
               Contact
-            </Link>
+            </a>
+
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                handleSeeRoute();
+              }}
+              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 font-medium"
+            >
+              <FontAwesomeIcon icon={faRoute} className="w-4 h-4" />
+              See Route
+            </button>
           </div>
         </div>
       )}

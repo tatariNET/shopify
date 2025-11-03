@@ -3,6 +3,8 @@ import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRoute } from '@fortawesome/free-solid-svg-icons';
 type Listing = {
   id: string;
   Brand: string;
@@ -52,6 +54,37 @@ export default function ListingDetail({ params }: { params: Promise<{ id: string
 
     fetchListing();
   }, [id, router]);
+  const handleSeeRoute = () => {
+    const destLat = 8.998964123447454;
+  
+    const destLng =38.78718387232911;
+        const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLat},${destLng}&travelmode=driving`;
+
+    if (!navigator.geolocation) {
+      window.open(fallbackUrl, "_blank");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destLat},${destLng}&travelmode=driving`;
+        
+        window.open(mapUrl, "_blank");
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        window.open(fallbackUrl, "_blank");
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    );
+  };
+
 
   if (loading) {
     return (
@@ -145,22 +178,15 @@ export default function ListingDetail({ params }: { params: Promise<{ id: string
             )}
           </div>
           
-          {/* Listing Details */}
           <div className="md:w-1/2 p-4 sm:p-6 md:p-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 leading-tight">
+            <h1 className="text-xl sm:text-xl font-semibold text-gray-900 mb-3 leading-tight">
               {listing.Brand} {listing.Model}
             </h1>
             
-            <div className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">
+            <div className="text-xl sm:text-xl font-medium font-mono text-gray-900 mb-6">
               {listing.price?.toLocaleString()} ETB
             </div>
-            
-            {listing.description && (
-              <div className="mb-6">
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{listing.description}</p>
-              </div>
-            )}
-            
+
             <div className="mb-6">
               <h2 className="text-lg font-semibold mb-3 sm:mb-4 text-gray-900">Specifications</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -196,6 +222,15 @@ export default function ListingDetail({ params }: { params: Promise<{ id: string
                     <div className="text-sm font-semibold text-gray-900">{listing.OS}</div>
                   </div>
                 )}
+                <button
+              onClick={() => {
+                handleSeeRoute();
+              }}
+              className=" bg-sky-600 px-4 py-3 rounded-lg text-black cursor-pointer text-center hover:text-white font-medium"
+            >
+              <FontAwesomeIcon icon={faRoute} className="w-4 h-4" />
+              See Route
+            </button>
               </div>
             </div>
             </div>
