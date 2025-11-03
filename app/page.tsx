@@ -21,6 +21,7 @@ type Listing = {
   images: string[];
   imageUrl: string | null;
   createdAt: string;
+  negotiable:string;
   status: string;
 };
 
@@ -152,15 +153,17 @@ export default function BuyerPage() {
                   />
                 </div>
               )}
-              {l.description && (
-                <div className="mb-3 text-xs text-gray-600 line-clamp-2 leading-relaxed">
-                  {l.description}
-                </div>
-              )}
+             
               <div className="mb-4 space-y-1.5 text-xs text-gray-800">
                 <div className="flex items-start">
                   <span className="text-black font-medium min-w-[60px] ">CPU:</span>
                   <span className="flex-1 line-clamp-1">{l.CPU}</span>
+                  
+                </div>
+                 <div className="flex items-start">
+                  <span className="text-black font-medium min-w-[60px] ">CPU:</span>
+                  <span className="flex-1 line-clamp-1">{l.CPU}</span>
+                  
                 </div>
                 <div className="flex items-start">
                   <span className="text-black font-medium min-w-[60px]">RAM:</span>
@@ -174,6 +177,11 @@ export default function BuyerPage() {
                   <span className="text-gray-500 min-w-[60px]">Storage:</span>
                   <span className="flex-1 line-clamp-1">{prettyStorage(l.Storage)}</span>
                 </div>
+                 {l.negotiable && (
+                <div className="mb-3 text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                  <strong>Note:</strong> Price is negotiable.
+                </div>
+              )}
               </div>
               <div className="w-full">
                 <div className="rounded-lg bg-stone-600 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800 transition-colors">
