@@ -103,7 +103,7 @@ const handleSeeRoute = () => {
               className="text-sm font-medium bg-slate-800/30 cursor-pointer rounded-2xl p-4 text-center border border-slate-700/50 transition-all duration-300 hover:bg-slate-700/50 hover:scale-105 hover:shadow-lg hover:text-slate-300 text-slate-300 group-hover:text-white transition-colors "
             >
               <p className=" text-xl text-slate-300 group-hover:scale-110 transition-transform duration-300"><FontAwesomeIcon icon={faLocation} className="p-4 bg-gray-800 rounded-2xl" /></p>
-              Bole alemnesh plaza
+              Bole, alemnesh plaza
             </button>
           {socialLinks.map((link, index) => (
             <a
