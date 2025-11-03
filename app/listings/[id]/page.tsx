@@ -76,10 +76,6 @@ export default function ListingDetail({ params }: { params: Promise<{ id: string
 
   return (
     <div className="container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
-      <Link href="/" className="inline-flex items-center text-blue-600 hover:underline mb-4 text-sm font-medium">
-        <span className="mr-1">←</span> Back to Shop
-      </Link>
-      
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="md:flex md:gap-6">
           <div className="md:w-1/2 p-4 sm:p-6 md:p-8">

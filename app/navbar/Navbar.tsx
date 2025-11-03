@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-blue-600">Shopify</span>
+          <span className="text-xl font-bold text-blue-600">Royal computer</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link href="/" className="text-gray-800 hover:text-blue-600 font-medium transition-colors">
@@ -32,20 +32,11 @@ export default function Navbar() {
           <Link href="/shop" className="text-gray-800 hover:text-blue-600 font-medium transition-colors">
             Shop
           </Link>
-          <Link href="/about" className="text-gray-800 hover:text-blue-600 font-medium transition-colors">
-            About
-          </Link>
           <Link href="#contact" className="text-gray-800 hover:text-blue-600 font-medium transition-colors">
             Contact
           </Link>
         </div>
-        <div className="hidden md:block">
-          <Link
-            href="/login"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow-sm transition-colors"
-          >
-            Get Started
-          </Link>
+        <div className="hidden md:block">      
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
