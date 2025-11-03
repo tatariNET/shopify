@@ -1,10 +1,7 @@
 "use client";
-
 import { useEffect, useMemo, useState } from "react";
 import ContactSection from "./components/ContactSection";
-
 type StorageItem = { Model: string; Size_GB: number; Type: string; BusType: string };
-
 type Listing = {
   id: string;
   Brand: string;
@@ -111,8 +108,7 @@ export default function BuyerPage() {
               href={`/listings/${l.id}`}
               className="block rounded-xl border border-gray-200 bg-white p-4 sm:p-5 hover:shadow-lg hover:border-blue-300 transition-all duration-200 active:scale-[0.99]"
             >
-              {/* Header with Brand, Model, Price */}
-              <div className="mb-3 flex items-start justify-between gap-2">
+                 <div className="mb-3 flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
                   <div className="text-xs font-medium text-blue-600 truncate">{l.Brand}</div>
                   <div className="text-base font-bold text-gray-900 line-clamp-2 leading-tight">{l.Model}</div>
@@ -134,15 +130,11 @@ export default function BuyerPage() {
                   />
                 </div>
               )}
-
-              {/* Description - Condensed for mobile */}
               {l.description && (
                 <div className="mb-3 text-xs text-gray-600 line-clamp-2 leading-relaxed">
                   {l.description}
                 </div>
               )}
-
-              {/* Key Specs - Compact layout */}
               <div className="mb-4 space-y-1.5 text-xs text-gray-700">
                 <div className="flex items-start">
                   <span className="text-gray-500 min-w-[60px]">CPU:</span>
@@ -161,8 +153,6 @@ export default function BuyerPage() {
                   <span className="flex-1 line-clamp-1">{prettyStorage(l.Storage)}</span>
                 </div>
               </div>
-
-              {/* CTA Button */}
               <div className="w-full">
                 <div className="rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors">
                   View Details
