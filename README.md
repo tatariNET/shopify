@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🖥️ Shopify – Client Page for Computer Market App
 
-## Getting Started
+Shopify is the client-side web application of our Computer Market App, designed to make buying and selling computers simple, fast, and visually appealing.
+Built with Next.js and Supabase, it provides a smooth user experience for browsing listings, viewing details, and connecting buyers with sellers.
 
-First, run the development server:
+🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🛒 Browse Listings: View a wide range of computer listings with detailed specifications.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧠 Smart Filtering & Sorting: Easily find products by brand, price, or configuration.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+💾 Dynamic Data Fetching: Data is pulled from Supabase in real-time.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🖼️ Optimized Image Loading: Images are handled through Next.js’s image optimization.
 
-## Learn More
+📱 Responsive Design: Works perfectly on desktops, tablets, and mobile devices.
 
-To learn more about Next.js, take a look at the following resources:
+🧭 Routing & Navigation: Smooth transitions and clean URL structure using Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔐 Secure Backend Integration: Powered by Supabase for authentication and data storage.

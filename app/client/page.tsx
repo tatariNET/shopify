@@ -139,8 +139,6 @@ export default function BuyerPage() {
                   {l.description}
                 </div>
               )}
-
-              {/* Key Specs - Compact layout */}
               <div className="mb-4 space-y-1.5 text-xs text-gray-700">
                 <div className="flex items-start">
                   <span className="text-gray-500 min-w-[60px]">CPU:</span>
