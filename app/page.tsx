@@ -156,7 +156,6 @@ export default function BuyerPage() {
               )}
              
               <div className="mb-4 space-y-1.5 text-xs text-gray-800">
-                
                  <div className="flex items-start">
                   <span className="text-black font-medium min-w-[60px] ">CPU:</span>
                   <span className="flex-1 line-clamp-1">{l.CPU}</span>
