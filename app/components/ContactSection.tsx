@@ -80,7 +80,7 @@ const handleSeeRoute = () => {
       color: "hover:text-purple-400",
     },
   ]);
-
+  
   return (
     <footer className="w-full bg-gradient-to-br from-slate-900 to-slate-800 border-t border-slate-700/50 text-slate-200">
       <div className="mx-auto max-w-4xl px-6 py-12">
