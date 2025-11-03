@@ -1,13 +1,11 @@
 import type { NextConfig } from "next";
-// next-pwa has no bundled types; require and cast to any to avoid TS error
-// @ts-ignore: no types for next-pwa
-const withPWA = require("next-pwa") as (config?: any) => any;
+// @ts-ignore: no declaration file for 'next-pwa'
+import withPWA from "next-pwa";
 
 /** @type {NextConfig} */
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-
-  // Remote images from Supabase storage
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -17,9 +15,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  // Disable Turbopack to avoid build errors
-  turbopack: {},
 };
 
 // Wrap with PWA
