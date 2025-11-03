@@ -86,7 +86,7 @@ export default function BuyerPage() {
 
   return (
     <>
-    <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8 mt-6">
       <div className="mb-6">
         <div className="mb-4 sm:mb-0 sm:flex sm:items-end sm:justify-between sm:gap-4">
           <div className="mb-4 sm:mb-0 flex flex-col justify-center align-bottom text-center">
@@ -98,7 +98,7 @@ export default function BuyerPage() {
       placeholder="Search brand, model, CPU, RAM ..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      className="w-full sm:w-64 px-4 py-2.5 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors placeholder-gray-400"
+      className="w-full sm:w-64 border-blue-600 px-4 py-2.5 text-sm text-center bg-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors placeholder-gray-400"
     />
     
   </div>
@@ -128,14 +128,14 @@ export default function BuyerPage() {
             <a
               key={l.id}
               href={`/listings/${l.id}`}
-              className="block rounded-xl border border-blue-300 bg-gray-50 p-4 sm:p-5 hover:shadow-md hover:border-gray-300 transition-all duration-200 active:scale-[0.99]"
+              className="block rounded-xl border border-black bg-gray-50 p-4 sm:p-5 hover:shadow-md hover:border-gray-300 transition-all duration-200 active:scale-[0.99]"
             >
                  <div className="mb-3 flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
                   <div className="text-xs font-bold text-gray-900">{l.Brand}</div>
                   <div className="text-base font-semibold italic  text-stone-800 line-clamp-2 leading-tight">{l.Model}</div>
                 </div>
-                <div className="flex-shrink-0 text-right">
+                <div className=" text-right">
                   <div className="text-lg font-semibold text-blue-900 mt-2">{l.price?.toLocaleString()} ETB</div>
                 </div>
               </div>
