@@ -131,9 +131,9 @@ const handleSeeRoute = () => {
         </div>
         <div className="border-t border-slate-700/50">
           <div className="flex flex-col md:flex-row items-center justify-between pt-6 -pb-2 text-sm text-slate-400">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mb-3">
               <i className="fa-regular fa-copyright text-xs" />
-              <span className="text-gray-400 mb-2 text-center font-mono ">{year} Royal Smart Computer. All rights reserved.</span>
+              <span className="text-gray-400  text-center font-mono ">{year} Royal Smart Computer.</span>
             </div>
 
 
