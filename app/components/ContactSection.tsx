@@ -83,33 +83,33 @@ const handleSeeRoute = () => {
   
   return (
     <footer className="w-full relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-black text-slate-200">
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[120%] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
-      <div className="mx-auto max-w-6xl px-6 pt-12 pb-10">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-40 w-[110%] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
+      <div className="mx-auto max-w-4xl px-4 pt-8 pb-6">
+        <div className="text-center mb-6">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <h3 className="text-xl sm:text-2xl font-semibold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               Royal Smart Computer
             </h3>
           </div>
-          <div className="mx-auto h-0.5 w-24 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full opacity-70" />
-          <p className="mt-3 text-slate-400 text-sm max-w-md mx-auto">
+          <div className="mx-auto h-0.5 w-16 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full opacity-70" />
+          <p className="mt-2 text-slate-400 text-xs max-w-sm mx-auto">
             Connect with us through your favorite platform.
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
           <button
             onClick={() => {
               handleSeeRoute();
             }}
-            className="group text-sm font-medium bg-slate-800/30 cursor-pointer rounded-2xl p-4 text-center border border-slate-700/50 transition-all duration-300 hover:bg-slate-800/50 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="group text-xs sm:text-sm font-medium bg-slate-800/30 cursor-pointer rounded-xl p-3 text-center border border-slate-700/50 transition-all duration-300 hover:bg-slate-800/50 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
           >
-            <p className="text-xl text-slate-200">
+            <p className="text-lg sm:text-xl text-slate-200">
               <FontAwesomeIcon
                 icon={faLocation}
-                className="p-4 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl shadow-sm"
+                className="p-3 sm:p-3.5 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl shadow-sm"
               />
             </p>
-            <span className="mt-2 block text-slate-300">Bole, alemnesh plaza</span>
+            <span className="mt-1.5 block text-slate-300">Bole, alemnesh plaza</span>
           </button>
           {socialLinks.map((link, index) => (
             <a
@@ -117,16 +117,14 @@ const handleSeeRoute = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group rounded-2xl p-4 text-center border border-slate-700/50 bg-slate-800/30 transition-all duration-300 hover:bg-slate-800/50 hover:shadow-lg hover:-translate-y-0.5 ${link.color}`}
+              className={`group rounded-xl p-3 text-center border border-slate-700/50 bg-slate-800/30 transition-all duration-300 hover:bg-slate-800/50 hover:shadow-md hover:-translate-y-0.5 ${link.color}`}
             >
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-700/50 group-hover:bg-slate-600/50 ring-1 ring-inset ring-slate-700/40 group-hover:ring-slate-600/40 transition-all duration-300">
-                  <i className={`${link.icon} text-xl text-slate-200 group-hover:scale-110 transition-transform duration-300`} />
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/50 group-hover:bg-slate-600/50 ring-1 ring-inset ring-slate-700/40 group-hover:ring-slate-600/40 transition-all duration-300">
+                  <i className={`${link.icon} text-lg text-slate-200 group-hover:scale-110 transition-transform duration-300`} />
                 </div>
-                <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-300">
-                  {link.name}
-                </span>
-                <span className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors duration-300">
+                <span className="sr-only">{link.name}</span>
+                <span className="text-[11px] sm:text-xs text-slate-300 group-hover:text-white transition-colors duration-300">
                   {link.username}
                 </span>
               </div>
@@ -134,8 +132,8 @@ const handleSeeRoute = () => {
           ))}
         </div>
         <div className="border-t border-slate-800/60">
-          <div className="flex flex-col md:flex-row items-center justify-between pt-6 text-xs sm:text-sm text-slate-400">
-            <div className="flex items-center gap-2 mb-3 md:mb-0">
+          <div className="flex flex-col md:flex-row items-center justify-between pt-4 text-[11px] sm:text-xs text-slate-400">
+            <div className="flex items-center gap-2 mb-2 md:mb-0">
               <i className="fa-regular fa-copyright text-[10px]" />
               <span className="text-gray-400 text-center font-mono">{year} Royal Smart Computer.</span>
             </div>

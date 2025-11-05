@@ -47,6 +47,7 @@ export default function BuyerPage() {
   const [lockFromMin, setLockFromMin] = useState(false);
   const [page, setPage] = useState(1);
   const pageSize = 10;
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const full = "Welcome to PC Bazaar";
@@ -171,7 +172,29 @@ export default function BuyerPage() {
         <p className="mt-2 text-sm text-gray-600 italic">Find the best laptops and PCs tailored for you</p>
       </div>
       <div className="mb-6">
-        <div className="mt-4 rounded-2xl ring-1 ring-gray-100 bg-gradient-to-b from-white to-slate-50 p-4 shadow-md">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div className="w-full sm:max-w-sm">
+            <div className="relative">
+              <svg className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-1.5a8 8 0 1 0 4.906 14.32l4.637 4.637a1 1 0 0 0 1.414-1.414l-4.637-4.637A8 8 0 0 0 10 2Z"/></svg>
+              <input
+                placeholder="Search brand, model, CPU, RAM ..."
+                value={query}
+                onChange={(e) => { setQuery(e.target.value); setPage(1); }}
+                className="w-full pl-9 pr-3 py-2.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 transition-all placeholder-gray-400"
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowFilters(v => !v)}
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 active:scale-[0.98] transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-gray-600"><path d="M3.75 5.25A.75.75 0 0 1 4.5 4.5h15a.75.75 0 0 1 .53 1.28l-5.28 5.22v4.75a.75.75 0 0 1-1.2.6l-2.5-1.87a.75.75 0 0 1-.3-.6v-2.88L3.97 5.78a.75.75 0 0 1-.22-.53Z"/></svg>
+            {showFilters ? 'Hide Filters' : 'Filters'}
+          </button>
+        </div>
+        {showFilters && (
+        <div className="rounded-2xl ring-1 ring-gray-100 bg-gradient-to-b from-white to-slate-50 p-4 shadow-md">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2 text-xs font-medium text-gray-700">
@@ -252,21 +275,6 @@ export default function BuyerPage() {
                 ))}
               </select>
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-xs font-medium text-gray-700 flex items-center gap-2">
-                <svg className="h-4 w-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-1.5a8 8 0 1 0 4.906 14.32l4.637 4.637a1 1 0 0 0 1.414-1.414l-4.637-4.637A8 8 0 0 0 10 2Z"/></svg>
-                <span>Search</span>
-              </label>
-              <div className="relative">
-                <svg className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-1.5a8 8 0 1 0 4.906 14.32l4.637 4.637a1 1 0 0 0 1.414-1.414l-4.637-4.637A8 8 0 0 0 10 2Z"/></svg>
-                <input
-                  placeholder="Search brand, model, CPU, RAM ..."
-                  value={query}
-                  onChange={(e) => { setQuery(e.target.value); setPage(1); }}
-                  className="w-full pl-9 pr-3 py-2.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 transition-all placeholder-gray-400"
-                />
-              </div>
-            </div>
           </div>
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
             <div className="text-xs text-gray-600">{filtered.length} results</div>
@@ -281,9 +289,8 @@ export default function BuyerPage() {
             </div>
           </div>
         </div>
+        )}
       </div>
-
-      {/* Available heading below filters */}
       <div className="mb-3">
         <h2 className="text-xl font-semibold text-gray-900">Available PCs</h2>
       </div>
