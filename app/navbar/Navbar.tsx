@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { faBars, faPhone, faRoute, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faBars, faXmark, faRoute } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +76,7 @@ export default function Navbar() {
         style={{ scaleX }}
       />
     <nav
-      className={`fixed top-0 inset-x-0 z-50 border-b border-gray-200 transition-all duration-300 ${
+      className={`fixed top-0  inset-x-0 z-50 border-b p-2 border-gray-200 transition-all duration-300 ${
         scrolled ? "bg-white/90 shadow-md backdrop-blur" : "bg-white/70 backdrop-blur"
       }`}
     >
@@ -87,19 +87,8 @@ export default function Navbar() {
             alt="Royal Computer Logo"
             width={40}
             height={40}
-            className="object-contain"
           />
-          <div className="relative flex items-center">
-            <motion.span
-              className="text-lg sm:text-xl font-bold text-blue-600 tracking-tight"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              whileHover={{ scale: 1.02 }}
-            >
-              Royal Computer
-            </motion.span>
-          </div>
+          
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <motion.a

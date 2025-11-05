@@ -50,7 +50,7 @@ export default function BuyerPage() {
   const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-    const full = "Welcome to PC Bazaar";
+    const full = "Welcome to Royal Computers";
     let i = 0;
     const typer = setInterval(() => {
       setTypedTitle(full.slice(0, i + 1));
@@ -154,8 +154,6 @@ export default function BuyerPage() {
   const rangeSize = Math.max(maxBound - minBound, 1);
   const minPct = ((minVal - minBound) / rangeSize) * 100;
   const maxPct = ((maxVal - minBound) / rangeSize) * 100;
-
-  // When lock is on, keep max at or above min+1
   useEffect(() => {
     if (!lockFromMin) return;
     if (typeof minPrice === 'number' && typeof maxPrice === 'number' && maxPrice <= minPrice) {
@@ -247,7 +245,7 @@ export default function BuyerPage() {
                   </label>
 
                   <div className="h-1 rounded-full bg-gray-200 relative overflow-hidden">
-                    <div className="absolute h-full bg-emerald-500" style={{ left: `${minPct}%`, right: `${100 - maxPct}%` }} />
+                    <div className="absolute h-full bg-red-800" style={{ left: `${minPct}%`, right: `${100 - maxPct}%` }} />
                   </div>
 
                   <div className="flex items-center justify-between text-[11px] text-gray-600">
@@ -326,24 +324,27 @@ export default function BuyerPage() {
                       -2%
                     </div>
                   </div>
-                  <img
-                    src={l.images?.[0]}
-                    alt={`${l.Brand} ${l.Model}`}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/placeholder-laptop.jpg';
-                    }}
-                  />
-                  <img
-                    src={l.images?.[1]}
-                    alt={`${l.Brand} ${l.Model}`}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/placeholder-laptop.jpg';
-                    }}
-                  />
+                  <div className="flex gap-2">
+  <img
+    src={l.images?.[0]}
+    alt={`${l.Brand} ${l.Model}`}
+    className="w-1/2 min-h-48 object-contain rounded-md"
+    onError={(e) => {
+      const target = e.target as HTMLImageElement;
+      target.src = '/placeholder-laptop.jpg';
+    }}
+  />
+  <img
+    src={l.images?.[1]}
+    alt={`${l.Brand} ${l.Model}`}
+    className="w-1/2 min-h-48 object-contain rounded-md"
+    onError={(e) => {
+      const target = e.target as HTMLImageElement;
+      target.src = '/placeholder-laptop.jpg';
+    }}
+  />
+</div>
+
                 </div>
 
               )}
